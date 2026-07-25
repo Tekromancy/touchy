@@ -1,7 +1,7 @@
 #!/bin/sh
 THIS_NAME=touchy
 THIS_GH=tekromancy
-THIS_BRANCH=master
+THIS_BRANCH=main
 TMP_DIR=$(mktemp -d --suffix="${THIS_NAME}")
 cleanup_func () {
   echo rm -Rf ${TMP}
