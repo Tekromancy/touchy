@@ -12,6 +12,15 @@ curl -sL https://raw.githubusercontent.com/tekromancy/touchy/refs/heads/master/b
 
 But I recommend you clone the repo and read it first, it’s pretty short
 
+## Autostart
+
+Add something like this to `~/.config/hypr/autostart.conf`;
+
+```
+# Enhanced touchpad disable-while-typing
+exec-once = /usr/local/bin/touchy
+```
+
 ## Game Mode
 
 touchy will not mess with touchpad if game mode is on.
@@ -37,3 +46,5 @@ For now these variables can be overridden by environment variables:
 : ${GAME_MODE_SEMAFORE_FILE:=/tmp/.game_mode_on}
 : ${VERBOSITY:=1}
 ```
+
+
