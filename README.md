@@ -1,6 +1,6 @@
 # touchy
 
-touchy watches for keyboard activity and turns off the touchpad
+touchy watches for keyboard activity and turns off the touchpad, for now this is for hyprland only. PRs welcome to add others.
 
 ## Install
 
