@@ -2,6 +2,16 @@
 
 touchy watches for keyboard activity and turns off the touchpad
 
+## Install
+
+Trust me?
+
+```
+curl -sL https://raw.githubusercontent.com/tekromancy/touchy/refs/heads/master/bootstrap.sh | bash
+```
+
+But I recommend you clone the repo and read it first, it’s pretty short
+
 ## Game Mode
 
 touchy will not mess with touchpad if game mode is on.
