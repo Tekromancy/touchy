@@ -1,7 +1,7 @@
 #!/bin/bash
 checkrc() {
   TARGETRC=$1
-  if [[ ${HOME}/.${TARGETRC} ]]; then
+  if [[ -f ${HOME}/.${TARGETRC} ]]; then
     source .${TARGETRC}
   fi
 }
