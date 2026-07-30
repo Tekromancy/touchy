@@ -12,6 +12,7 @@ checkrc ${HOME}/.config/touchy/touchyrc
 : "${TOUCHPAD:=asuf1209:00-2808:0219-touchpad}"
 : "${GAME_MODE_SEMAFORE_FILE:=/tmp/.game_mode_on}"
 : "${TOUCHY_LOGFILE:=/tmp/.touchy.log}"
+: "${TOUCHY_SINGLETON_LOCK:=/tmp/.touchy.lock}"
 : ${TOUCHY_LOGLEVEL:=0}
 : ${TOUCHY_VERBOSITY:=1}
 : ${TOUCHY_DELAY:=1}
@@ -27,12 +28,19 @@ logger() {
 }
 
 check_singleton_lock() {
+  if [[ -f ${TOUCHY_SINGLETON_LOCK} ]]; then
+    TOUCHY_SINGLETON_DEATH=1
+    logger 100 'TOUCHY singleton lock found!'
+    ps aux | grep touchy >>${TOUCHY_LOGFILE}
+  else
+    touch ${TOUCHY_SINGLETON_LOCK}
+  fi
   if [[ -f ${TOUCHY_LOGFILE} ]]; then
     TOUCHY_SINGLETON_DEATH=1
     logger 100 'TOUCHY already running!'
-    ps aux | grep touchy >>${TOUCHY_LOGFILE}
     printenv >>${TOUCHY_LOGFILE}
   fi
+  echo "PID $$ $0 $@" >>${TOUCHY_LOGFILE}
   date -I >>${TOUCHY_LOGFILE}
   if [[ TOUCHY_SINGLETON_DEATH -eq 1 ]]; then
     exit 1
